@@ -82,7 +82,7 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate {
         switch statusLabel.text {
         case "Ready":
             statusLabel.textColor = .systemGreen
-        case "In Progress":
+        case "In progress":
             statusLabel.textColor = .systemBlue
         default:
             statusLabel.textColor = .systemGray

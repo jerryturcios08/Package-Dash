@@ -20,7 +20,7 @@ enum Status: String {
     case completed = "Completed"
 }
 
-struct Task {
+class Task {
     var image: UIImage
     var category: Category
     var summary: String
