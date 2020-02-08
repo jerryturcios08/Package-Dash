@@ -41,6 +41,14 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
 
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         print("LOCATION CHANGED!")
+        let locationLat = userLocation.coordinate.latitude
+        let destinationLat = Points.checkpointLocation.latitude
+        let locationLong = userLocation.coordinate.longitude
+        let destinationLong = Points.checkpointLocation.longitude
+
+        if locationLat == destinationLat && locationLong == destinationLong && statusLabel.text == "In progress" {
+            homeScreen.updateTask(for: selectedTask!, withStatus: .completed)
+        }
     }
 
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
