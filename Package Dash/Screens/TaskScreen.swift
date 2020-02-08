@@ -6,11 +6,45 @@
 //  Copyright © 2020 Jerry Turcios. All rights reserved.
 //
 
+import MapKit
 import UIKit
 
 class TaskScreen: UIViewController {
+    @IBOutlet var mapView: MKMapView!
+    @IBOutlet var categoryLabel: UILabel!
+    @IBOutlet var summaryTextView: UITextView!
+    @IBOutlet var statusLabel: UILabel!
+
+    var selectedTask: Task?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
+        if let task = selectedTask {
+            categoryLabel.text = task.category.rawValue
+            summaryTextView.text = task.summary
+            statusLabel.text = task.status.rawValue
+        }
+
+        setupStyling()
+    }
+
+    private func setupStyling() {
+        // Configure category label
+        categoryLabel?.font = .boldSystemFont(ofSize: 30)
+
+        // Configure summary text view
+        summaryTextView.isEditable = false
+        summaryTextView.isSelectable = false
+
+        // Configure status label styling
+        switch statusLabel.text {
+        case "Ready":
+            statusLabel.textColor = .systemGreen
+        case "In Progress":
+            statusLabel.textColor = .systemBlue
+        default:
+            statusLabel.textColor = .systemGray
+        }
     }
 }

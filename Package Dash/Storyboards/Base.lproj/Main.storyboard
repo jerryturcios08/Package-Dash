@@ -74,7 +74,7 @@
                                             <outlet property="statusLabel" destination="S7C-jJ-hbG" id="ff2-Px-e7O"/>
                                             <outlet property="summaryLabel" destination="nRo-gh-5XG" id="eK0-qy-m7N"/>
                                             <outlet property="taskImageView" destination="rxs-TN-JPQ" id="GpC-Zu-Yin"/>
-                                            <segue destination="uv2-ex-m6r" kind="show" id="cbW-am-pKY"/>
+                                            <segue destination="uv2-ex-m6r" kind="show" identifier="TaskSegue" id="cbW-am-pKY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -107,21 +107,71 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0kk-oO-wwt">
-                                <rect key="frame" x="0.0" y="44" width="375" height="260"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="300"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="260" id="Cp5-Ud-zoI"/>
+                                    <constraint firstAttribute="height" constant="300" id="Cp5-Ud-zoI"/>
                                 </constraints>
                             </mapView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0gP-0I-d8e">
+                                <rect key="frame" x="8" y="352" width="359" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="gSI-dk-59n">
+                                <rect key="frame" x="8" y="381" width="359" height="128"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="J22-n5-FNp"/>
+                                </constraints>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bp-f0-FMG" customClass="PDButton" customModule="Package_Dash" customModuleProvider="target">
+                                <rect key="frame" x="279" y="607" width="80" height="40"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="80" id="NBZ-mt-VGS"/>
+                                    <constraint firstAttribute="height" constant="40" id="gDR-qX-d75"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name=".AppleSystemUIFont" family=".AppleSystemUIFont" pointSize="15"/>
+                                <state key="normal" title="Start"/>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBL-GS-PJB">
+                                <rect key="frame" x="8" y="626" width="200" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="mxx-VB-94i"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="iUK-R4-vaS" firstAttribute="trailing" secondItem="8Bp-f0-FMG" secondAttribute="trailing" constant="16" id="CrG-lh-HEe"/>
                             <constraint firstItem="0kk-oO-wwt" firstAttribute="leading" secondItem="iUK-R4-vaS" secondAttribute="leading" id="EXV-p5-2uj"/>
                             <constraint firstItem="0kk-oO-wwt" firstAttribute="trailing" secondItem="iUK-R4-vaS" secondAttribute="trailing" id="G6X-h9-d3J"/>
+                            <constraint firstItem="0gP-0I-d8e" firstAttribute="top" secondItem="0kk-oO-wwt" secondAttribute="bottom" constant="8" id="IOH-3x-s0c"/>
+                            <constraint firstItem="kBL-GS-PJB" firstAttribute="leading" secondItem="iUK-R4-vaS" secondAttribute="leading" constant="8" id="O8D-H0-XvK"/>
+                            <constraint firstItem="gSI-dk-59n" firstAttribute="leading" secondItem="iUK-R4-vaS" secondAttribute="leading" constant="8" id="Xc2-9V-anw"/>
                             <constraint firstItem="0kk-oO-wwt" firstAttribute="top" secondItem="iUK-R4-vaS" secondAttribute="top" id="aoo-Hq-cwo"/>
+                            <constraint firstItem="iUK-R4-vaS" firstAttribute="trailing" secondItem="gSI-dk-59n" secondAttribute="trailing" constant="8" id="awE-a9-sF2"/>
+                            <constraint firstItem="iUK-R4-vaS" firstAttribute="trailing" secondItem="0gP-0I-d8e" secondAttribute="trailing" constant="8" id="bWP-9B-uAm"/>
+                            <constraint firstItem="iUK-R4-vaS" firstAttribute="bottom" secondItem="kBL-GS-PJB" secondAttribute="bottom" constant="20" id="fo0-qY-KZX"/>
+                            <constraint firstItem="0gP-0I-d8e" firstAttribute="leading" secondItem="iUK-R4-vaS" secondAttribute="leading" constant="8" id="jor-Ya-SdD"/>
+                            <constraint firstItem="gSI-dk-59n" firstAttribute="top" secondItem="0gP-0I-d8e" secondAttribute="bottom" constant="8" id="tMP-99-2L1"/>
+                            <constraint firstItem="iUK-R4-vaS" firstAttribute="bottom" secondItem="8Bp-f0-FMG" secondAttribute="bottom" constant="20" id="zhw-rP-eEP"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="iUK-R4-vaS"/>
                     </view>
                     <navigationItem key="navigationItem" id="O7L-wF-fVh"/>
+                    <connections>
+                        <outlet property="categoryLabel" destination="0gP-0I-d8e" id="SKC-eZ-nAN"/>
+                        <outlet property="mapView" destination="0kk-oO-wwt" id="Jlc-tz-0gB"/>
+                        <outlet property="statusLabel" destination="kBL-GS-PJB" id="zsG-l7-Qib"/>
+                        <outlet property="summaryTextView" destination="gSI-dk-59n" id="u0O-LZ-7DM"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdi-iY-KF1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
