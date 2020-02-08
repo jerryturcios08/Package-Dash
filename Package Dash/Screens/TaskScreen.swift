@@ -9,7 +9,14 @@
 import MapKit
 import UIKit
 
-class TaskScreen: UIViewController, CLLocationManagerDelegate {
+enum Points {
+    static let homeBaseLocation = CLLocationCoordinate2D(latitude: 40.912194, longitude: -73.129941)
+//    static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.921366, longitude: -73.128926)
+    static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.91218, longitude: -73.129941)
+
+}
+
+class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var summaryTextView: UITextView!
@@ -24,8 +31,50 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateRoute()
         obtainLocation()
         setupScreen()
+    }
+
+    func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+        let renderer = MKPolylineRenderer(overlay: overlay)
+        renderer.strokeColor = .blue
+        renderer.lineWidth = 4.0
+
+        return renderer
+    }
+
+    private func generateRoute() {
+        mapView.delegate = self
+
+        let sourceLocation = Points.homeBaseLocation
+        let checkpointLocation = Points.checkpointLocation
+
+        let sourcePlacemark = MKPlacemark(coordinate: sourceLocation)
+        let checkpointPlacemark = MKPlacemark(coordinate: checkpointLocation)
+
+        let sourceMapItem = MKMapItem(placemark: sourcePlacemark)
+        let checkpointMapItem = MKMapItem(placemark: checkpointPlacemark)
+
+        let directionRequest = MKDirections.Request()
+        directionRequest.source = sourceMapItem
+        directionRequest.destination = checkpointMapItem
+        directionRequest.transportType = .walking
+
+        let directions = MKDirections(request: directionRequest)
+
+        directions.calculate { (response, error) -> Void in
+            guard let response = response else {
+                if let error = error {
+                    print("Error: \(error)")
+                }
+
+                return
+            }
+
+            let route = response.routes[0]
+            self.mapView.addOverlays([route.polyline], level: .aboveRoads)
+        }
     }
 
     private func obtainLocation() {
@@ -90,24 +139,24 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate {
     }
 }
 
-extension TaskScreen: MKMapViewDelegate {
-    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-        guard annotation is HomeBase else { return nil }
-
-        let identifier = "HomeBase"
-        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
-
-        if annotationView == nil {
-            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-            annotationView?.canShowCallout = true
-            annotationView?.pinTintColor = .black
-
-            let button = UIButton(type: .detailDisclosure)
-            annotationView?.rightCalloutAccessoryView = button
-        } else {
-            annotationView?.annotation = annotation
-        }
-
-        return annotationView
-    }
-}
+//extension TaskScreen: MKMapViewDelegate {
+//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+//        guard annotation is HomeBase else { return nil }
+//
+//        let identifier = "HomeBase"
+//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+//
+//        if annotationView == nil {
+//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+//            annotationView?.canShowCallout = true
+//            annotationView?.pinTintColor = .black
+//
+//            let button = UIButton(type: .detailDisclosure)
+//            annotationView?.rightCalloutAccessoryView = button
+//        } else {
+//            annotationView?.annotation = annotation
+//        }
+//
+//        return annotationView
+//    }
+//}

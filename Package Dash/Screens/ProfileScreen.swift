@@ -81,12 +81,10 @@ extension ProfileScreen: UICollectionViewDataSource, UICollectionViewDelegate {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Achievement", for: indexPath) as? AchievementCell else {
-            fatalError("Error: Unable to dequeue collection view cell for achievements")
-        }
-
-//        let achievement = achievements[indexPath.item]
-
+//        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "Achievement", for: indexPath) as? AchievementCell else {
+//            fatalError("Error: Unable to dequeue collection view cell for achievements")
+//        }
+//
 
         return UICollectionViewCell()
     }
