@@ -15,5 +15,15 @@ class TaskCell: UITableViewCell {
     @IBOutlet var statusLabel: UILabel!
 
     func setupCell(task: Task) {
+        taskImageView.image = task.image
+        categoryLabel.text = task.category.rawValue
+        summaryLabel.text = task.summary
+        statusLabel.text = task.category.rawValue
+
+        setupStyling()
+    }
+
+    private func setupStyling() {
+        taskImageView.layer.cornerRadius = taskImageView.frame.height / 2
     }
 }

@@ -8,13 +8,13 @@
 
 import UIKit
 
-enum Category {
+enum Category: String {
     case packageCollector // package collector does not require more than 3 miles
     case relocation // relocation involves running more than 3 miles, it is more rare for this to happen
     // add more event types
 }
 
-enum Status {
+enum Status: String {
     case ready
     case inProgress
     case completed
