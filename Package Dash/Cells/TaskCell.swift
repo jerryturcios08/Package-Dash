@@ -38,7 +38,7 @@ class TaskCell: UITableViewCell {
         switch statusLabel.text {
         case "Ready":
             statusLabel.textColor = .systemGreen
-        case "In Progress":
+        case "In progress":
             statusLabel.textColor = .systemBlue
         default:
             statusLabel.textColor = .systemGray

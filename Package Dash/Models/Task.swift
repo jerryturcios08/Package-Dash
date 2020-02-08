@@ -16,7 +16,7 @@ enum Category: String {
 
 enum Status: String {
     case ready = "Ready"
-    case inProgress = "In Progress"
+    case inProgress = "In progress"
     case completed = "Completed"
 }
 
