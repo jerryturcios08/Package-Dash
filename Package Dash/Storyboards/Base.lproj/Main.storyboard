@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="yaX-oF-a5q">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15705" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xJZ-iV-ygl">
     <device id="retina4_7" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15706"/>
@@ -16,7 +16,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="qku-LD-XiG">
-                                <rect key="frame" x="0.0" y="44" width="375" height="623"/>
+                                <rect key="frame" x="0.0" y="44" width="375" height="574"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Task" rowHeight="100" id="H4g-QP-E3h" customClass="TaskCell" customModule="Package_Dash" customModuleProvider="target">
@@ -96,7 +96,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1047.2" y="126.38680659670166"/>
+            <point key="canvasLocation" x="1986.4000000000001" y="126.38680659670166"/>
         </scene>
         <!--Task Screen-->
         <scene sceneID="8zK-LJ-EKV">
@@ -129,7 +129,7 @@
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8Bp-f0-FMG" customClass="PDButton" customModule="Package_Dash" customModuleProvider="target">
-                                <rect key="frame" x="279" y="607" width="80" height="40"/>
+                                <rect key="frame" x="279" y="558" width="80" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="80" id="NBZ-mt-VGS"/>
                                     <constraint firstAttribute="height" constant="40" id="gDR-qX-d75"/>
@@ -138,7 +138,7 @@
                                 <state key="normal" title="Start"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBL-GS-PJB">
-                                <rect key="frame" x="8" y="626" width="200" height="21"/>
+                                <rect key="frame" x="8" y="577" width="200" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="mxx-VB-94i"/>
                                 </constraints>
@@ -175,12 +175,13 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdi-iY-KF1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1984.8" y="125.4872563718141"/>
+            <point key="canvasLocation" x="2924" y="125.4872563718141"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Today-->
         <scene sceneID="1ff-zZ-9BD">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="yaX-oF-a5q" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Today" image="Today Tab Bar Icon" id="pvN-XC-d9X"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h6x-Gk-y36">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
@@ -193,7 +194,27 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iGS-g2-RSo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="137.68115942028987" y="126.5625"/>
+            <point key="canvasLocation" x="1076" y="126.38680659670166"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="SmT-xG-ngQ">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="xJZ-iV-ygl" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="cYG-NF-crQ">
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="yaX-oF-a5q" kind="relationship" relationship="viewControllers" id="hcP-Bt-f0w"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uWN-sX-5lb" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="136.80000000000001" y="126.38680659670166"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Today Tab Bar Icon" width="25" height="25"/>
+    </resources>
 </document>

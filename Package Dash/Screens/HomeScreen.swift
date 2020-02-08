@@ -19,18 +19,26 @@ class HomeScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        title = "Day 1"
-        navigationController?.navigationBar.barTintColor = AppColors.primaryColor
-
-        tableView.dataSource = self
-        tableView.delegate = self
+        setupStyling()
 
         #if DEBUG
         // Add dummy data for tasks
-        tasks.append(Task(image: UIImage(named: "Package Collector Icon")!, category: .packageCollector, summary: "A supply package was found a few miles from home base. Retrieve it in order to obtain supplies for the next week", status: .ready))
-        tasks.append(Task(image: UIImage(named: "Relocation Icon")!, category: .relocation, summary: "A group of bandits have rallied up and are approaching home base. We need to relocate to a safehouse 5 miles away", status: .inProgress))
+        tasks.append(Task(image: UIImage(named: "Package Collector Icon")!, category: .packageCollector, summary: "A supply package was found a few miles from home base. Retrieve it in order to obtain supplies for the next week.", status: .ready))
+        tasks.append(Task(image: UIImage(named: "Relocation Icon")!, category: .relocation, summary: "A group of bandits have rallied up and are approaching home base. We need to relocate to a safehouse 5 miles away from our current location.", status: .inProgress))
         #endif
+    }
+
+    private func setupStyling() {
+        // Configure screen properties
+        title = "Day 1"
+        navigationController?.navigationBar.barTintColor = AppColors.navBarColor
+
+        tabBarController?.tabBar.barTintColor = AppColors.tabBarColor
+        tabBarController?.tabBar.tintColor = .white
+
+        // Configure table view delegate properties
+        tableView.dataSource = self
+        tableView.delegate = self
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

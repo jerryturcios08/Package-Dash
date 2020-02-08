@@ -9,5 +9,6 @@
 import UIKit
 
 enum AppColors {
-    static let primaryColor = UIColor(named: "PrimaryColor")
+    static let navBarColor = UIColor(named: "NavBarColor")
+    static let tabBarColor = UIColor(named: "TabBarColor")
 }
