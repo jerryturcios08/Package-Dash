@@ -15,6 +15,7 @@ class TaskCell: UITableViewCell {
     @IBOutlet var statusLabel: UILabel!
 
     func setupCell(task: Task) {
+        // Sets the cell's properties using the properties of the task argument
         taskImageView.image = task.image
         categoryLabel.text = task.category.rawValue
         summaryLabel.text = task.summary
@@ -24,6 +25,9 @@ class TaskCell: UITableViewCell {
     }
 
     private func setupStyling() {
+        // Configure table view cell properties
+        selectionStyle = .none
+
         // Configure task image view styling
         taskImageView.layer.cornerRadius = taskImageView.frame.height / 2
 
