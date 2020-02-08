@@ -32,6 +32,21 @@ class ProfileScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        if achievements.isEmpty {
+            collectionView.isHidden = true
+            let emptyLabel = UILabel()
+            emptyLabel.translatesAutoresizingMaskIntoConstraints = false
+            emptyLabel.text = "No achievements have been found"
+            view.addSubview(emptyLabel)
+
+            NSLayoutConstraint.activate([
+                emptyLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+                emptyLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+            ])
+        } else {
+            collectionView.isHidden = false
+        }
+
         #if DEBUG
         let user = User(avatar: UIImage(named: "avatar")!, name: "Jerry Turcios", joinedSinceDate: Date(timeIntervalSinceNow: 0), rank: .hunter)
         imageView.image = user.avatar
@@ -46,13 +61,15 @@ class ProfileScreen: UIViewController {
         joinedSinceLabel.text = "Active since \(month)/\(day)/\(year)"
 
         rankLabel.text = "Current Rank: \(user.rank.rawValue)"
-        rankLabel.textColor = .systemGray
         #endif
 
         setupStyling()
     }
 
     private func setupStyling() {
+        // Configures the view's styling
+        view.backgroundColor = .opaqueSeparator
+
         // Configures the image view styling
         imageView.layer.cornerRadius = imageView.frame.height / 2
     }
