@@ -27,10 +27,10 @@ class Task {
     var status: Status
     // Add properties to be integrated with mapkit/GPS
 
-    init(image: UIImage, category: Category, summary: String, status: Status) {
+    init(image: UIImage, category: Category, summary: String) {
         self.image = image
         self.category = category
         self.summary = summary
-        self.status = status
+        self.status = .ready
     }
 }

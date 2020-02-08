@@ -11,7 +11,8 @@ import UIKit
 
 enum Points {
     static let homeBaseLocation = CLLocationCoordinate2D(latitude: 40.912194, longitude: -73.129941)
-//    static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.921366, longitude: -73.128926)
+    // dunkin donuts
+    //    static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.921366, longitude: -73.128926)
     static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.91218, longitude: -73.129941)
 
 }
@@ -36,6 +37,12 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         setupScreen()
     }
 
+    // MARK: - MapView methods
+
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+        print("LOCATION CHANGED!")
+    }
+
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
         let renderer = MKPolylineRenderer(overlay: overlay)
         renderer.strokeColor = .blue
@@ -43,6 +50,28 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
 
         return renderer
     }
+
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        guard annotation is HomeBase else { return nil }
+
+        let identifier = "HomeBase"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
+
+        if annotationView == nil {
+            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            annotationView?.pinTintColor = .black
+
+            let button = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = button
+        } else {
+            annotationView?.annotation = annotation
+        }
+
+        return annotationView
+    }
+
+    // MARK: - Routing methods
 
     private func generateRoute() {
         mapView.delegate = self
@@ -103,6 +132,8 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         }
     }
 
+    // MARK: - User interface methods
+
     private func setupScreen() {
         // Can be configured later so the user can set their home as home base
         let location = CLLocationCoordinate2D(latitude: 40.912194, longitude: -73.129941)
@@ -138,25 +169,3 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
         }
     }
 }
-
-//extension TaskScreen: MKMapViewDelegate {
-//    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-//        guard annotation is HomeBase else { return nil }
-//
-//        let identifier = "HomeBase"
-//        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier) as? MKPinAnnotationView
-//
-//        if annotationView == nil {
-//            annotationView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: identifier)
-//            annotationView?.canShowCallout = true
-//            annotationView?.pinTintColor = .black
-//
-//            let button = UIButton(type: .detailDisclosure)
-//            annotationView?.rightCalloutAccessoryView = button
-//        } else {
-//            annotationView?.annotation = annotation
-//        }
-//
-//        return annotationView
-//    }
-//}
