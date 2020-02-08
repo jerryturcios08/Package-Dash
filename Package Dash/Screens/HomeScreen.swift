@@ -16,6 +16,9 @@ class HomeScreen: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        title = "Day 1"
+        navigationController?.navigationBar.barTintColor = AppColors.primaryColor
+
         tableView.dataSource = self
         tableView.delegate = self
 
@@ -24,6 +27,10 @@ class HomeScreen: UIViewController {
         tasks.append(Task(image: UIImage(named: "Package Collector Icon")!, category: .packageCollector, summary: "A supply package was found a few miles from home base. Retrieve it in order to obtain supplies for the next week", status: .ready))
         tasks.append(Task(image: UIImage(named: "Relocation Icon")!, category: .relocation, summary: "A group of bandits have rallied up and are approaching home base. We need to relocate to a safehouse 5 miles away", status: .inProgress))
         #endif
+    }
+
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
 }
 
@@ -42,6 +49,12 @@ extension HomeScreen: UITableViewDataSource, UITableViewDelegate {
 
         return cell
     }
+
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        if let vc = storyboard?.instantiateViewController(identifier: "TaskScreen") as? TaskScreen {
+//            navigationController?.pushViewController(vc, animated: true)
+//        }
+//    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 100

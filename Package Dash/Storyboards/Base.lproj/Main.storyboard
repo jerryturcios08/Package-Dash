@@ -74,6 +74,7 @@
                                             <outlet property="statusLabel" destination="S7C-jJ-hbG" id="ff2-Px-e7O"/>
                                             <outlet property="summaryLabel" destination="nRo-gh-5XG" id="eK0-qy-m7N"/>
                                             <outlet property="taskImageView" destination="rxs-TN-JPQ" id="GpC-Zu-Yin"/>
+                                            <segue destination="uv2-ex-m6r" kind="show" id="cbW-am-pKY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -97,20 +98,34 @@
             </objects>
             <point key="canvasLocation" x="1047.2" y="126.38680659670166"/>
         </scene>
-        <!--View Controller-->
+        <!--Task Screen-->
         <scene sceneID="8zK-LJ-EKV">
             <objects>
-                <viewController id="uv2-ex-m6r" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TaskScreen" id="uv2-ex-m6r" customClass="TaskScreen" customModule="Package_Dash" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="cpa-Fb-Kh5">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="0kk-oO-wwt">
+                                <rect key="frame" x="0.0" y="44" width="375" height="260"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="260" id="Cp5-Ud-zoI"/>
+                                </constraints>
+                            </mapView>
+                        </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="0kk-oO-wwt" firstAttribute="leading" secondItem="iUK-R4-vaS" secondAttribute="leading" id="EXV-p5-2uj"/>
+                            <constraint firstItem="0kk-oO-wwt" firstAttribute="trailing" secondItem="iUK-R4-vaS" secondAttribute="trailing" id="G6X-h9-d3J"/>
+                            <constraint firstItem="0kk-oO-wwt" firstAttribute="top" secondItem="iUK-R4-vaS" secondAttribute="top" id="aoo-Hq-cwo"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="iUK-R4-vaS"/>
                     </view>
+                    <navigationItem key="navigationItem" id="O7L-wF-fVh"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tdi-iY-KF1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1986" y="126"/>
+            <point key="canvasLocation" x="1984.8" y="125.4872563718141"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="1ff-zZ-9BD">
