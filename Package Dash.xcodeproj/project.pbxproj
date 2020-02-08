@@ -10,6 +10,7 @@
 		C614B83523EF47440097566E /* Today.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C614B83423EF47440097566E /* Today.storyboard */; };
 		C614B83723EF48840097566E /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C614B83623EF48840097566E /* Profile.storyboard */; };
 		C614B83923EF49260097566E /* ProfileScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C614B83823EF49260097566E /* ProfileScreen.swift */; };
+		C614B83C23EF4C1B0097566E /* UINav+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = C614B83B23EF4C1B0097566E /* UINav+Ext.swift */; };
 		C696ED3123EF0A7200CEA666 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696ED3023EF0A7200CEA666 /* AppDelegate.swift */; };
 		C696ED3323EF0A7200CEA666 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696ED3223EF0A7200CEA666 /* SceneDelegate.swift */; };
 		C696ED3523EF0A7200CEA666 /* HomeScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = C696ED3423EF0A7200CEA666 /* HomeScreen.swift */; };
@@ -27,6 +28,7 @@
 		C614B83423EF47440097566E /* Today.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Today.storyboard; sourceTree = "<group>"; };
 		C614B83623EF48840097566E /* Profile.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		C614B83823EF49260097566E /* ProfileScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileScreen.swift; sourceTree = "<group>"; };
+		C614B83B23EF4C1B0097566E /* UINav+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UINav+Ext.swift"; sourceTree = "<group>"; };
 		C696ED2D23EF0A7200CEA666 /* Package Dash.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Package Dash.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C696ED3023EF0A7200CEA666 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C696ED3223EF0A7200CEA666 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,6 +55,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C614B83A23EF4C0B0097566E /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				C614B83B23EF4C1B0097566E /* UINav+Ext.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		C696ED2423EF0A7200CEA666 = {
 			isa = PBXGroup;
 			children = (
@@ -126,6 +136,7 @@
 		C696ED4E23EF23B500CEA666 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				C614B83A23EF4C0B0097566E /* Extensions */,
 				C696ED4F23EF23C500CEA666 /* constants.swift */,
 			);
 			path = Utilities;
@@ -218,6 +229,7 @@
 				C696ED4B23EF134500CEA666 /* Task.swift in Sources */,
 				C614B83923EF49260097566E /* ProfileScreen.swift in Sources */,
 				C696ED5023EF23C500CEA666 /* constants.swift in Sources */,
+				C614B83C23EF4C1B0097566E /* UINav+Ext.swift in Sources */,
 				C696ED3123EF0A7200CEA666 /* AppDelegate.swift in Sources */,
 				C696ED4D23EF233600CEA666 /* TaskScreen.swift in Sources */,
 				C696ED3323EF0A7200CEA666 /* SceneDelegate.swift in Sources */,

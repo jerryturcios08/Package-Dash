@@ -31,9 +31,7 @@ class HomeScreen: UIViewController {
     private func setupStyling() {
         // Configure screen properties
         title = "Today"
-        navigationController?.navigationBar.barTintColor = AppColors.navBarColor
-
-        tabBarController?.tabBar.barTintColor = AppColors.tabBarColor
+        navigationController?.navigationBar.tintColor = .white
         tabBarController?.tabBar.tintColor = .white
 
         // Configure table view properties
