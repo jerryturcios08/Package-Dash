@@ -9,12 +9,13 @@
 import MapKit
 import UIKit
 
-class TaskScreen: UIViewController {
+class TaskScreen: UIViewController, CLLocationManagerDelegate {
     @IBOutlet var mapView: MKMapView!
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var summaryTextView: UITextView!
     @IBOutlet var statusLabel: UILabel!
 
+    var locationManager: CLLocationManager!
     var selectedTask: Task?
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -23,7 +24,34 @@ class TaskScreen: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        obtainLocation()
         setupScreen()
+    }
+
+    private func obtainLocation() {
+        // Configure location manager
+        let locationManager = CLLocationManager()
+        locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBest
+        mapView.showsUserLocation = true
+
+        // Check for Location Services
+        if (CLLocationManager.locationServicesEnabled()) {
+            locationManager.requestAlwaysAuthorization()
+            locationManager.requestWhenInUseAuthorization()
+        }
+
+        // Zoom to the user's location
+        if let userLocation = locationManager.location?.coordinate {
+            let viewRegion = MKCoordinateRegion(center: userLocation, latitudinalMeters: 200, longitudinalMeters: 200)
+            mapView.setRegion(viewRegion, animated: false)
+        }
+
+        self.locationManager = locationManager
+
+        DispatchQueue.main.async {
+            self.locationManager.startUpdatingLocation()
+        }
     }
 
     private func setupScreen() {
