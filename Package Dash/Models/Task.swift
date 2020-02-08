@@ -9,15 +9,15 @@
 import UIKit
 
 enum Category: String {
-    case packageCollector // package collector does not require more than 3 miles
-    case relocation // relocation involves running more than 3 miles, it is more rare for this to happen
+    case packageCollector = "Package Collector" // package collector does not require more than 3 miles
+    case relocation = "Relocation" // relocation involves running more than 3 miles, it is more rare for this to happen
     // add more event types
 }
 
 enum Status: String {
-    case ready
-    case inProgress
-    case completed
+    case ready = "Ready"
+    case inProgress = "In Progress"
+    case completed = "Completed"
 }
 
 struct Task {

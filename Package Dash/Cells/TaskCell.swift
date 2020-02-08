@@ -18,12 +18,26 @@ class TaskCell: UITableViewCell {
         taskImageView.image = task.image
         categoryLabel.text = task.category.rawValue
         summaryLabel.text = task.summary
-        statusLabel.text = task.category.rawValue
+        statusLabel.text = task.status.rawValue
 
         setupStyling()
     }
 
     private func setupStyling() {
+        // Configure task image view styling
         taskImageView.layer.cornerRadius = taskImageView.frame.height / 2
+
+        // Configure category label styling
+        categoryLabel.font = .boldSystemFont(ofSize: 20)
+
+        // Configure status label styling
+        switch statusLabel.text {
+        case "Ready":
+            statusLabel.textColor = .systemGreen
+        case "In Progress":
+            statusLabel.textColor = .systemBlue
+        default:
+            statusLabel.textColor = .systemGray
+        }
     }
 }
