@@ -30,15 +30,16 @@ class HomeScreen: UIViewController {
 
     private func setupStyling() {
         // Configure screen properties
-        title = "Day 1"
+        title = "Today"
         navigationController?.navigationBar.barTintColor = AppColors.navBarColor
 
         tabBarController?.tabBar.barTintColor = AppColors.tabBarColor
         tabBarController?.tabBar.tintColor = .white
 
-        // Configure table view delegate properties
+        // Configure table view properties
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.separatorStyle = .none
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
