@@ -49,6 +49,11 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
 
         if locationLat == destinationLat && locationLong == destinationLong && statusLabel.text == "In progress" {
             homeScreen.updateTask(for: selectedTask!, withStatus: .completed)
+
+            // Uodate the user interface for the task screen
+            taskButton.isHidden = true
+            statusLabel.text = "Completed"
+            statusLabel.textColor = .systemYellow
         }
     }
 
@@ -182,16 +187,15 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
 
     @IBAction func startTapped(_ sender: Any) {
         if !active {
+            // Performs actions and updates the user interface
             active = true
 
             taskButton.backgroundColor = .red
             taskButton.setTitle("Stop", for: .normal)
-
             statusLabel.text = "In progress"
             statusLabel.textColor = .systemBlue
         } else {
             taskButton.isHidden = true
-
             statusLabel.text = "Completed"
             statusLabel.textColor = .systemYellow
         }
