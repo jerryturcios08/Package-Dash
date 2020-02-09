@@ -39,6 +39,14 @@ class HomeScreen: UIViewController {
         tableView.separatorStyle = .none
     }
 
+    func updateTask(for currentTask: Task, withStatus: Status) {
+        for task in tasks {
+            if task.summary == currentTask.summary {
+                task.status = withStatus
+            }
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "TaskSegue" {
             if let indexPath = tableView.indexPathForSelectedRow {

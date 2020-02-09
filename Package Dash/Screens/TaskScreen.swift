@@ -11,10 +11,8 @@ import UIKit
 
 enum Points {
     static let homeBaseLocation = CLLocationCoordinate2D(latitude: 40.912194, longitude: -73.129941)
-    // dunkin donuts
-    //    static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.921366, longitude: -73.128926)
+//    static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.921366, longitude: -73.128926) // dunkin donuts
     static let checkpointLocation = CLLocationCoordinate2D(latitude: 40.91218, longitude: -73.129941)
-
 }
 
 class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate {
@@ -22,9 +20,12 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
     @IBOutlet var categoryLabel: UILabel!
     @IBOutlet var summaryTextView: UITextView!
     @IBOutlet var statusLabel: UILabel!
+    @IBOutlet var taskButton: PDButton!
 
     var locationManager: CLLocationManager!
     var selectedTask: Task?
+    weak var homeScreen: HomeScreen!
+    var active = false
 
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
@@ -172,8 +173,27 @@ class TaskScreen: UIViewController, CLLocationManagerDelegate, MKMapViewDelegate
             statusLabel.textColor = .systemGreen
         case "In progress":
             statusLabel.textColor = .systemBlue
+        case "Completed":
+            statusLabel.textColor = .systemYellow
         default:
             statusLabel.textColor = .systemGray
+        }
+    }
+
+    @IBAction func startTapped(_ sender: Any) {
+        if !active {
+            active = true
+
+            taskButton.backgroundColor = .red
+            taskButton.setTitle("Stop", for: .normal)
+
+            statusLabel.text = "In progress"
+            statusLabel.textColor = .systemBlue
+        } else {
+            taskButton.isHidden = true
+
+            statusLabel.text = "Completed"
+            statusLabel.textColor = .systemYellow
         }
     }
 }
